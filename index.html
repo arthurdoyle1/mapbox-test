@@ -55,7 +55,7 @@ var layers;
 // Since featureLayer is an asynchronous method, we use the `.on('ready'`
 // call to only use its marker data once we know it is actually loaded.
 L.mapbox.featureLayer()
-    .loadURL('stations.geojson.geojson')
+    .loadURL('stations.geojson')
     .on('ready', function(e) {
         layers = e.target;
         showStations();
