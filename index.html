@@ -39,7 +39,7 @@ body { margin: 0; padding: 0; }
 
     map.on('load', () => {
         // add a clustered GeoJSON source for a sample set of earthquakess
-        map.addSource('earthquakes', {
+        map.addSource('places', {
             'type': 'geojson',
             'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
             'cluster': true,
@@ -55,9 +55,9 @@ body { margin: 0; padding: 0; }
         });
         // circle and symbol layers for rendering individual earthquakes (unclustered points)
         map.addLayer({
-            'id': 'earthquake_circle',
+            'id': 'places_circle',
             'type': 'circle',
-            'source': 'earthquakes',
+            'source': 'places',
             'filter': ['!=', 'cluster', true],
             'paint': {
                 'circle-color': [
@@ -77,9 +77,9 @@ body { margin: 0; padding: 0; }
             }
         });
         map.addLayer({
-            'id': 'earthquake_label',
+            'id': 'places_label',
             'type': 'symbol',
-            'source': 'earthquakes',
+            'source': 'places',
             'filter': ['!=', 'cluster', true],
             'layout': {
                 'text-field': [
@@ -107,7 +107,7 @@ body { margin: 0; padding: 0; }
 
         function updateMarkers() {
             const newMarkers = {};
-            const features = map.querySourceFeatures('earthquakes');
+            const features = map.querySourceFeatures('places');
 
             // for every cluster on the screen, create an HTML marker for it (if we didn't yet),
             // and add it to the map if it's not there already
@@ -137,7 +137,7 @@ body { margin: 0; padding: 0; }
 
         // after the GeoJSON data is loaded, update markers on the screen on every frame
         map.on('render', () => {
-            if (!map.isSourceLoaded('earthquakes')) return;
+            if (!map.isSourceLoaded('places')) return;
             updateMarkers();
         });
     });
