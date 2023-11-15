@@ -48,7 +48,7 @@ body { margin: 0; padding: 0; }
         // add a clustered GeoJSON source for a sample set of earthquakess
         map.addSource('places', {
             'type': 'geojson',
-            'data': 'convertcsv.geojson',
+            'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
             'cluster': true,
             'clusterRadius': 80,
             'clusterProperties': {
