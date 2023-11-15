@@ -62,7 +62,7 @@ body { margin: 0; padding: 0; }
         });
         // circle and symbol layers for rendering individual earthquakes (unclustered points)
         map.addLayer({
-            'id': 'places_circle',
+            'id': 'places',
             'type': 'circle',
             'source': 'places',
             'filter': ['!=', 'cluster', true],
@@ -127,12 +127,12 @@ new mapboxgl.Popup()
 });
  
 // Change the cursor to a pointer when the mouse is over the places layer.
-map.on('mouseenter', 'places_circle', () => {
+map.on('mouseenter', 'places', () => {
 map.getCanvas().style.cursor = 'pointer';
 });
  
 // Change it back to a pointer when it leaves.
-map.on('mouseleave', 'places_circle', () => {
+map.on('mouseleave', 'places', () => {
 map.getCanvas().style.cursor = '';
 }); 
 
