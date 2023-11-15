@@ -5,7 +5,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.016666, 153.2]
+        "coordinates": [-28.016666,153.451092]
       },
       "properties": {
         "line": "red"
@@ -15,7 +15,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.016666, 153.2]
+        "coordinates": [-28.016666,153.551092]
       },
       "properties": {
         "line": "blue"
