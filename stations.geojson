@@ -5,7 +5,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.016666,-28.016666]
+        "coordinates": [-0, 0]
       },
       "properties": {
         "line": "red"
@@ -15,7 +15,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.016666,153.551092]
+        "coordinates": [-0, 0]
       },
       "properties": {
         "line": "blue"
@@ -25,7 +25,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.05666, 153.1]
+        "coordinates": [0, 0]
       },
       "properties": {
         "line": "green"
@@ -35,7 +35,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-28.9666, 151.2]
+        "coordinates": [-0, 0]
       },
       "properties": {
         "line": "red"
