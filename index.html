@@ -34,7 +34,7 @@ body { margin: 0; padding: 0; }
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    // filters for classifying earthquakes into five categories based on magnitude
+    // filters for classifying earthquakes into five categories based on magnitudes
     const mag1 = ['<', ['get', 'mag'], 2];
     const mag2 = ['all', ['>=', ['get', 'mag'], 2], ['<', ['get', 'mag'], 3]];
     const mag3 = ['all', ['>=', ['get', 'mag'], 3], ['<', ['get', 'mag'], 4]];
