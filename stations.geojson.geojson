@@ -1,5 +1,5 @@
 {
-  "type": "featurelayer",
+  "type": "FeatureCollection",
   "features": [
     {
       "type": "Feature",
