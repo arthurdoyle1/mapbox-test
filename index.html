@@ -91,7 +91,9 @@
     <!-- Slider for Year -->
     <div class='session' id='sliderbar'>
       <h2>Year: <label id='active-year'>2018</label></h2>
-      <input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
+<input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
+<label for="show-all-years">Show All Years</label>
+<input type="checkbox" id="show-all-years">
     </div>
   </div>
 </div>
@@ -152,10 +154,35 @@
   });
 
   document.getElementById('slider').addEventListener('input', (event) => {
-    const year = parseInt(event.target.value);
+  const year = parseInt(event.target.value);
+  const showAllYears = document.getElementById('show-all-years').checked;
+
+  if (showAllYears) {
+    // If "Show All Years" is checked, remove the year filter
+    map.setFilter('collisions', null);
+  } else {
+    // Apply the filter based on the selected year
+    map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
+  }
+
+  document.getElementById('active-year').innerText = year;
+});
+
+// Add an event listener for the "Show All Years" checkbox
+document.getElementById('show-all-years').addEventListener('change', (event) => {
+  const year = parseInt(document.getElementById('slider').value);
+  const showAllYears = event.target.checked;
+
+  if (showAllYears) {
+    // If checked, remove the year filter
+    map.setFilter('collisions', null);
+    document.getElementById('active-year').innerText = 'All Years';
+  } else {
+    // Apply the filter based on the selected year
     map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
     document.getElementById('active-year').innerText = year;
-  });
+  }
+});
 </script>
 </body>
 </html>
