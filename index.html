@@ -106,46 +106,47 @@
     zoom: 12
   });
 
-map.on('load', () => {
-  map.addLayer({
-    id: 'collisions',
-    type: 'circle',
-    source: {
-      type: 'geojson',
-      data: './collisions1601.geojson'
-    },
-    paint: {
-'circle-color': [
-  'match',
-  ['get', 'Diplomacy_category'],
-  'Arms control', '#FF5733',   // Replace 'Category1' with the actual category value and color
-  'Cultural Diplomacy (Defence)', '#FFC300',   // Replace 'Category2' with the actual category value and color
-  'Defence Cooperation', '#C70039',   // Replace 'Category3' with the actual category value and color
-  'Defence Infrastructure', '#FF5733',   // Replace 'Category1' with the actual category value and color
-  'HADR – Disaster Response', '#FFC300',   // Replace 'Category2' with the actual category value and color
-  'Maritime Security', '#C70039',   // Replace 'Category3' with the actual category value and color
-  'Military Exercises', '#FF5733',   // Replace 'Category1' with the actual category value and color
-  'Military Medical Diplomacy', '#FFC300',   // Replace 'Category2' with the actual category value and color
-  'MIL-POL Engagement', '#C70039',   // Replace 'Category3' with the actual category value and color
-  'Sports Diplomacy (Defence)', '#FF5733',   // Replace 'Category1' with the actual category value and color
+  map.on('load', () => {
+    map.addLayer({
+      id: 'collisions',
+      type: 'circle',
+      source: {
+        type: 'geojson',
+        data: './collisions1601.geojson'
+      },
+      paint: {
+        'circle-color': [
+          'match',
+          ['get', 'Diplomacy_category'],
+          'Arms control', '#FF5733',
+          'Cultural Diplomacy (Defence)', '#FFC300',
+          'Defence Cooperation', '#C70039',
+          'Defence Infrastructure', '#FF5733',
+          'HADR – Disaster Response', '#FFC300',
+          'Maritime Security', '#C70039',
+          'Military Exercises', '#FF5733',
+          'Military Medical Diplomacy', '#FFC300',
+          'MIL-POL Engagement', '#C70039',
+          'Sports Diplomacy (Defence)', '#FF5733',
+          /* Default color */
+          '#CCCCCC'
+        ],
+        'circle-opacity': 0.8
+      },
+      filter: ['==', ['number', ['get', 'Year']], 2020]
+    });
 
-],
-    },
-    filter: ['==', ['number', ['get', 'Year']], 2020]
+    // Add popups to markers
+    map.on('click', 'collisions', (e) => {
+      const properties = e.features[0].properties;
+      const year = properties.Year;
+
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(`Year: ${year}`)
+        .addTo(map);
+    });
   });
-
-  // Add popups to markers
-  map.on('click', 'collisions', (e) => {
-    const properties = e.features[0].properties;
-    const year = properties.Year;
-
-    new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML(`Year: ${year}`)
-      .addTo(map);
-  });
-});
-
 
   document.getElementById('slider').addEventListener('input', (event) => {
     const year = parseInt(event.target.value);
