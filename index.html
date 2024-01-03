@@ -91,7 +91,7 @@
     <!-- Slider for Year -->
     <div class='session' id='sliderbar'>
       <h2>Year: <label id='active-year'>2018</label></h2>
-      <input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
+      <input id='slider' class='row' type='range' min='2024' max='2018' step='1' value='2024' />
     </div>
   </div>
 </div>
@@ -102,8 +102,8 @@
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v11',
-    center: [170.4068, -14.9244],
-    zoom: 5.5
+    center: [-74.0059, 40.7128],
+    zoom: 12
   });
 
   map.on('load', () => {
@@ -136,7 +136,7 @@
         'circle-stroke-width': 1,
         'circle-opacity': 0.7,
       },
-      filter: ['all', ['>=', ['number', ['get', 'Year']], 2018]]
+      filter: ['all', ['<=', ['number', ['get', 'Year']], 2024]]
     });
 
     // Add popups to markers
@@ -153,9 +153,4 @@
 
   document.getElementById('slider').addEventListener('input', (event) => {
     const year = parseInt(event.target.value);
-    map.setFilter('collisions', ['all', ['>=', ['number', ['get', 'Year']], year]]);
-    document.getElementById('active-year').innerText = year;
-  });
-</script>
-</body>
-</html>
+    map.setFilter('collis
