@@ -94,7 +94,23 @@
 <input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
 <label for="show-all-years">Show All Years</label>
 <input type="checkbox" id="show-all-years">
-    </div>
+<div class='session'>
+    <h2>Delivering Country</h2>
+    <select id='delivering-country'>
+      <option value='all'>All Countries</option>
+      <!-- Add options for each country -->
+    </select>
+  </div>
+
+  <!-- Dropdown for Diplomacy Category -->
+  <div class='session'>
+    <h2>Diplomacy Category</h2>
+    <select id='diplomacy-category'>
+      <option value='all'>All Categories</option>
+      <!-- Add options for each category -->
+    </select>
+  </div>
+</div>
   </div>
 </div>
 
@@ -183,6 +199,39 @@ document.getElementById('show-all-years').addEventListener('change', (event) => 
     document.getElementById('active-year').innerText = year;
   }
 });
+// Function to build the filter array
+function buildFilter() {
+  const selectedYear = parseInt(document.getElementById('slider').value);
+  const selectedCountry = document.getElementById('delivering-country').value;
+  const selectedCategory = document.getElementById('diplomacy-category').value;
+
+  let filter = ['all'];
+
+  if (selectedYear) {
+    filter.push(['==', ['number', ['get', 'Year']], selectedYear]);
+  }
+
+  if (selectedCountry !== 'all') {
+    filter.push(['==', ['get', 'Delivering_Country'], selectedCountry]);
+  }
+
+  if (selectedCategory !== 'all') {
+    filter.push(['==', ['get', 'Diplomacy_category'], selectedCategory]);
+  }
+
+  return filter;
+}
+
+// Update filter when dropdowns or slider change
+function updateFilter() {
+  const filter = buildFilter();
+  map.setFilter('collisions', filter);
+}
+
+document.getElementById('delivering-country').addEventListener('change', updateFilter);
+document.getElementById('diplomacy-category').addEventListener('change', updateFilter);
+document.getElementById('slider').addEventListener('input', updateFilter);
+document.getElementById('show-all-years').addEventListener('change', updateFilter);
 </script>
 </body>
 </html>
