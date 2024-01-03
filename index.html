@@ -132,11 +132,11 @@
           /* Default color */
           '#808080'
         ],
-        'circle-stroke-color': 'white',
-        'circle-stroke-width': 1,
-        'circle-opacity': 0.7,
+            'circle-stroke-color': 'white',
+            'circle-stroke-width': 1,
+            'circle-opacity': 0.7,
       },
-      filter: ['all', ['>=', ['number', ['get', 'Year']], 2018]]
+      filter: ['==', ['number', ['get', 'Year']], 2020]
     });
 
     // Add popups to markers
@@ -153,7 +153,7 @@
 
   document.getElementById('slider').addEventListener('input', (event) => {
     const year = parseInt(event.target.value);
-    map.setFilter('collisions', ['all', ['>=', ['number', ['get', 'Year']], year]]);
+    map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
     document.getElementById('active-year').innerText = year;
   });
 </script>
