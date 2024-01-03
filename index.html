@@ -102,10 +102,12 @@ a {
   <div class='label'>4</div>
   <div class='label'>5+</div>
 </div>
-    <div class='session' id='sliderbar'>
-  <h2>Hour: <label id='active-hour'>12PM</label></h2>
-  <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+<!-- Slider for Year -->
+<div class='session' id='sliderbar'>
+  <h2>Year: <label id='active-year'>2018</label></h2>
+  <input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
 </div>
+
   </div>
 </div>
 </div>
@@ -161,16 +163,12 @@ map.on('load', () => {
   });
 });
 document.getElementById('slider').addEventListener('input', (event) => {
-  const hour = parseInt(event.target.value);
-  // update the map
-  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+  const year = parseInt(event.target.value);
+  // Update the map filter
+  map.setFilter('collisions', ['==', ['number', ['get', 'Year']], year]);
 
-  // converting 0-23 hour to AMPM format
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  const hour12 = hour % 12 ? hour % 12 : 12;
-
-  // update text in the UI
-  document.getElementById('active-hour').innerText = hour12 + ampm;
+  // Update text in the UI
+  document.getElementById('active-year').innerText = year;
 });
 </script>
 
