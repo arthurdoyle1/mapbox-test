@@ -107,27 +107,6 @@
   });
 
   map.on('load', () => {
-    map.addLayer({
-      id: 'collisions',
-      type: 'circle',
-      source: {
-        type: 'geojson',
-        data: './collisions1601.geojson'
-      },
-      paint: {
-        'circle-radius': [
-          'interpolate',
-          ['linear'],
-          ['number', ['get', 'Casualty']],
-          0,
-          4,
-          5,
-          24
-        ],
-        'circle-opacity': 0.8
-      },
-      filter: ['==', ['number', ['get', 'Year']], 2020]
-    });
 
     // Add popups to markers
     map.on('click', 'collisions', (e) => {
