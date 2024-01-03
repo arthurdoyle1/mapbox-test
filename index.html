@@ -141,7 +141,18 @@ map.on('load', () => {
     filter: ['==', ['number', ['get', 'Hour']], 12] // This line is moved and corrected
   });
 });
+document.getElementById('slider').addEventListener('input', (event) => {
+  const hour = parseInt(event.target.value);
+  // update the map
+  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
 
+  // converting 0-23 hour to AMPM format
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const hour12 = hour % 12 ? hour % 12 : 12;
+
+  // update text in the UI
+  document.getElementById('active-hour').innerText = hour12 + ampm;
+});
 </script>
 
   
