@@ -1,131 +1,159 @@
-<!DOCTYPE html>
-<html>
 <head>
   <meta charset='utf-8' />
-  <title>NYC Motor Vehicle Collisions</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+<title>NYC motor vehicle collisions</title>
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-    }
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
-    h1 {
-      font-size: 20px;
-      line-height: 30px;
-    }
+h1 {
+  font-size: 20px;
+  line-height: 30px;
+}
 
-    h2 {
-      font-size: 14px;
-      line-height: 20px;
-      margin-bottom: 10px;
-    }
+h2 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
 
-    a {
-      text-decoration: none;
-      color: #2dc4b2;
-    }
+a {
+  text-decoration: none;
+  color: #2dc4b2;
+}
 
-    #console {
-      position: absolute;
-      width: 240px;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: white;
-    }
+#console {
+  position: absolute;
+  width: 240px;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: white;
+}
+}
 
-    .session {
-      margin-bottom: 20px;
-    }
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
-    .row {
-      height: 12px;
-      width: 100%;
-    }
+.session {
+  margin-bottom: 20px;
+}
 
-    .colors {
-      background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
-      margin-bottom: 5px;
-    }
+.row {
+  height: 12px;
+  width: 100%;
+}
 
-    .labels {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .label {
-      flex: 1;
-      text-align: center;
-    }
-  </style>
+.colors {
+  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
+  margin-bottom: 5px;
+}
+</style>
 </head>
 
 <body>
-  <div id='map'></div>
-  <div id='console'>
-    <h1>Motor Vehicle Collisions</h1>
-    <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths</a> in NYC, Jan 2016</p>
-    <div class='session'>
-      <h2>Casualty</h2>
-      <div class='row colors'></div>
-      <div class='row labels'>
-        <div class='label'>0</div>
-        <div class='label'>1</div>
-        <div class='label'>2</div>
-        <div class='label'>3</div>
-        <div class='label'>4</div>
-        <div class='label'>5+</div>
-      </div>
-    </div>
-    <div class='session' id='sliderbar'>
-      <h2>Hour: <label id='active-hour'>12PM</label></h2>
-      <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
-    </div>
+<div id='map'></div>
+<div id='console'>
+  <h1>Motor vehicle collisions</h1>
+  <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths</a> in NYC, Jan 2016</p>
+  <div class='session'>
+  <h2>Casualty</h2>
+  <div class='row colors'>
   </div>
+  <div class='row labels'>
+    <div class='label'>0</div>
+    <div class='label'>1</div>
+    <div class='label'>2</div>
+    <div class='label'>3</div>
+    <div class='label'>4</div>
+    <div class='label'>5+</div>
+    <div class='session' id='sliderbar'>
+  <h2>Hour: <label id='active-hour'>12PM</label></h2>
+  <input id='slider' class='row' type='range' min='0' max='23' step='1' value='12' />
+</div>
+  </div>
+</div>
+</div>
 
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0ZG95MyIsImEiOiJjbG96bnN4dGEwMmNnMmltajcybzBqYTRrIn0.ZbzBgIBqibfEWXo9j0mUgw';
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0ZG95MyIsImEiOiJjbG96bWhmZzQwMXNoMmxxdmVqc2c2ZWRmIn0._PxpDHic5ZbhSndCkiVzIg';
 
-    const map = new mapboxgl.Map({
-      container: 'map', // container element id
-      style: 'mapbox://styles/mapbox/light-v11', // Map style
-      center: [-74.0060, 40.7128], // NYC center
-      zoom: 10 // Adjust the zoom level as needed
-    });
+const map = new mapboxgl.Map({
+  container: 'map', // container element id
+  style: 'mapbox://styles/mapbox/light-v11',
+  center: [-74.0059, 40.7128], // initial map center in [lon, lat]
+  zoom: 12
+});
 
-    map.on('load', () => {
-      map.addLayer({
-        id: 'collisions',
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: 'collisions1601.geojson' // Replace with the path to your GeoJSON file
-        },
-        paint: {
-          // Define paint properties
-        }
-      });
-    });
+map.on('load', () => {
+  map.addLayer({
+    id: 'collisions',
+    type: 'circle',
+    source: {
+      type: 'geojson',
+      data: './collisions1601.geojson' // replace this with the url of your own geojson
+    },
+    paint: {
+      'circle-radius': [
+        'interpolate',
+        ['linear'],
+        ['number', ['get', 'Casualty']],
+        0,
+        4,
+        5,
+        24
+      ],
+      'circle-color': [
+        'interpolate',
+        ['linear'],
+        ['number', ['get', 'Casualty']],
+        0,
+        '#2DC4B2',
+        1,
+        '#3BB3C3',
+        2,
+        '#669EC4',
+        3,
+        '#8B88B6',
+        4,
+        '#A2719B',
+        5,
+        '#AA5E79'
+      ],
+      'circle-opacity': 0.8
+    },
+    filter: ['==', ['number', ['get', 'Hour']], 12] // This line is moved and corrected
+  });
+});
+document.getElementById('slider').addEventListener('input', (event) => {
+  const hour = parseInt(event.target.value);
+  // update the map
+  map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
 
-    document.getElementById('slider').addEventListener('input', (event) => {
-      const hour = parseInt(event.target.value);
-      map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+  // converting 0-23 hour to AMPM format
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const hour12 = hour % 12 ? hour % 12 : 12;
 
-      const ampm = hour >= 12 ? 'PM' : 'AM';
-      const hour12 = hour % 12 ? hour % 12 : 12;
-      document.getElementById('active-hour').innerText = hour12 + ampm;
-    });
-  </script>
+  // update text in the UI
+  document.getElementById('active-hour').innerText = hour12 + ampm;
+});
+</script>
+
+  
 </body>
-</html>
