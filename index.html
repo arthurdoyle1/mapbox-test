@@ -1,11 +1,12 @@
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset='utf-8' />
-<title>NYC motor vehicle collisions</title>
-<meta name='viewport' content='width=device-width, initial-scale=1' />
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
-
-<style>
+  <title>NYC motor vehicle collisions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+  <style>
 body {
   margin: 0;
   padding: 0;
@@ -86,8 +87,8 @@ a {
 </head>
 
 <body>
-<div id='map'></div>
-<div id='console'>
+  <div id='map'></div>
+  <div id='console'>
   <h1>Motor vehicle collisions</h1>
   <p>Data: <a href='https://data.cityofnewyork.us/Public-Safety/NYPD-Motor-Vehicle-Collisions/h9gi-nx95'>Motor vehicle collision injuries and deaths</a> in NYC, Jan 2016</p>
   <div class='session'>
@@ -161,7 +162,19 @@ map.on('load', () => {
     },
     filter: ['==', ['number', ['get', 'Year']], 2020]
   });
-});
+// Add popups to markers
+      map.on('click', 'collisions', (e) => {
+        const properties = e.features[0].properties;
+        const casualtyCount = properties.Casualty;
+        const year = properties.Year;
+
+        new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(`Year: ${year}<br>Casualties: ${casualtyCount}`)
+          .addTo(map);
+      });
+    });
+
 document.getElementById('slider').addEventListener('input', (event) => {
   const year = parseInt(event.target.value);
   // Update the map filter
@@ -169,8 +182,7 @@ document.getElementById('slider').addEventListener('input', (event) => {
 
   // Update text in the UI
   document.getElementById('active-year').innerText = year;
-});
-</script>
-
-  
+    });
+  </script>
 </body>
+</html>
