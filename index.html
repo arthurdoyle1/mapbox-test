@@ -102,7 +102,7 @@ a {
 </div>
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0ZG95MyIsImEiOiJjbG96bWhmZzQwMXNoMmxxdmVqc2c2ZWRmIn0._PxpDHic5ZbhSndCkiVzIg';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0ZG95MyIsImEiOiJjbG96bnN4dGEwMmNnMmltajcybzBqYTRrIn0.ZbzBgIBqibfEWXo9j0mUgw';
 
 const map = new mapboxgl.Map({
   container: 'map', // container element id
@@ -117,7 +117,7 @@ map.on('load', () => {
     type: 'circle',
     source: {
       type: 'geojson',
-      data: 'path_to_your_geojson_file' // Replace with the path to your GeoJSON file
+      data: 'collisions1601.geojson' // Replace with the path to your GeoJSON file
     },
     paint: {
       'circle-radius': 6, // Adjust the radius as needed
