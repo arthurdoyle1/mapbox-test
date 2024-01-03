@@ -106,8 +106,6 @@
     zoom: 12
   });
 
-  let currentYear = 2018; // Initial year
-
   map.on('load', () => {
     map.addLayer({
       id: 'collisions',
@@ -136,13 +134,9 @@
         ],
         'circle-stroke-color': 'white',
         'circle-stroke-width': 1,
-        'circle-opacity': [
-          'match',
-          ['number', ['get', 'Year']],
-          currentYear, 0.7, // Show only the selected year with opacity 0.7
-          0 // Hide other years with opacity 0
-        ],
-      }
+        'circle-opacity': 0.7,
+      },
+      filter: ['all', ['>=', ['number', ['get', 'Year']], 2018]]
     });
 
     // Add popups to markers
@@ -159,17 +153,8 @@
 
   document.getElementById('slider').addEventListener('input', (event) => {
     const year = parseInt(event.target.value);
-    
-    // Update the opacity filter to show only the selected year
-    map.setPaintProperty('collisions', 'circle-opacity', [
-      'match',
-      ['number', ['get', 'Year']],
-      year, 0.7,
-      0
-    ]);
-
+    map.setFilter('collisions', ['all', ['>=', ['number', ['get', 'Year']], year]]);
     document.getElementById('active-year').innerText = year;
-    currentYear = year; // Update the current year
   });
 </script>
 </body>
