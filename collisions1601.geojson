@@ -6,7 +6,7 @@
       "Injured": 1,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 18,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 1
     },
@@ -20,7 +20,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 19,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 0
     },
@@ -34,7 +34,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Outside Car Distraction",
-      "Hour": 19,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 0
     },
@@ -48,7 +48,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 19,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 0
     },
@@ -62,7 +62,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Driver Inattention/Distraction",
-      "Hour": 20,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 0
     },
@@ -76,7 +76,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 18,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -90,7 +90,7 @@
       "Injured": 0,
       "Killed": 1,
       "Factor1": "Unspecified",
-      "Hour": 19,
+      "Year": 2020,
       "Day": "Thu",
       "Casualty": 1
     },
@@ -104,7 +104,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 18,
+      "Year": 2020,
       "Day": "Thu",
       "Casualty": 0
     },
@@ -118,7 +118,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Fatigued/Drowsy",
-      "Hour": 13,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -132,7 +132,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 18,
+      "Year": 2020,
       "Day": "Thu",
       "Casualty": 0
     },
@@ -146,7 +146,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Fatigued/Drowsy",
-      "Hour": 16,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -160,7 +160,7 @@
       "Injured": 1,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 1
     },
@@ -174,7 +174,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Fatigued/Drowsy",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -188,7 +188,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -202,7 +202,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "View Obstructed/Limited",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -216,7 +216,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -230,7 +230,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Drugs (Illegal)",
-      "Hour": 17,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -244,7 +244,7 @@
       "Injured": 2,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 6,
+      "Year": 2020,
       "Day": "Tue",
       "Casualty": 2
     },
@@ -258,7 +258,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 13,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 0
     },
@@ -272,7 +272,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Backing Unsafely",
-      "Hour": 7,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -286,7 +286,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Pavement Slippery",
-      "Hour": 7,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -300,7 +300,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 7,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -314,7 +314,7 @@
       "Injured": 0,
       "Killed": 0,
       "Factor1": "Driver Inattention/Distraction",
-      "Hour": 9,
+      "Year": 2020,
       "Day": "Wed",
       "Casualty": 0
     },
@@ -328,7 +328,7 @@
       "Injured": 1,
       "Killed": 0,
       "Factor1": "Unspecified",
-      "Hour": 2,
+      "Year": 2020,
       "Day": "Fri",
       "Casualty": 1
     },
