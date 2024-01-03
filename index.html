@@ -106,48 +106,35 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYXJ0ZG95MyIsImEiOiJjbG96bWhmZzQwMXNoMmxxdmVqc
 
 const map = new mapboxgl.Map({
   container: 'map', // container element id
-  style: 'mapbox://styles/mapbox/light-v11',
-  center: [-74.0059, 40.7128], // initial map center in [lon, lat]
-  zoom: 12
+  style: 'mapbox://styles/mapbox/light-v11', // Map style
+  center: [177.9, -17.75], // Adjust the initial map center to focus on your data's location
+  zoom: 12 // Adjust the zoom level as needed
 });
 
 map.on('load', () => {
   map.addLayer({
-    id: 'collisions',
+    id: 'diplomacy',
     type: 'circle',
     source: {
       type: 'geojson',
-      data: './collisions1601.geojson' // replace this with the url of your own geojson
+      data: 'path_to_your_geojson_file' // Replace with the path to your GeoJSON file
     },
     paint: {
-      'circle-radius': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0,
-        4,
-        5,
-        24
-      ],
-      'circle-color': [
-        'interpolate',
-        ['linear'],
-        ['number', ['get', 'Casualty']],
-        0,
-        '#2DC4B2',
-        1,
-        '#3BB3C3',
-        2,
-        '#669EC4',
-        3,
-        '#8B88B6',
-        4,
-        '#A2719B',
-        5,
-        '#AA5E79'
-      ],
+      'circle-radius': 6, // Adjust the radius as needed
+      'circle-color': {
+        property: 'Diplomacy_category', // Use 'Diplomacy_category' to determine the color
+        type: 'categorical',
+        stops: [
+          ['HADR – Disaster Response', '#f28cb1'],
+          ['MIL-POL Engagement', '#5e5ce6'],
+          ['Training', '#3bb2d0'],
+          ['Visit Diplomacy', '#f1f075'],
+          ['Military Exercises', '#223b53']
+          // Add more categories and colors as needed
+        ]
+      },
       'circle-opacity': 0.8
-    },
+    }
     filter: ['==', ['number', ['get', 'Hour']], 12] // This line is moved and corrected
   });
 });
