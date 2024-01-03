@@ -94,23 +94,7 @@
 <input id='slider' class='row' type='range' min='2018' max='2024' step='1' value='2018' />
 <label for="show-all-years">Show All Years</label>
 <input type="checkbox" id="show-all-years">
-<div class='session'>
-    <h2>Delivering Country</h2>
-    <select id='delivering-country'>
-      <option value='all'>All Countries</option>
-      <!-- Add options for each country -->
-    </select>
-  </div>
-
-  <!-- Dropdown for Diplomacy Category -->
-  <div class='session'>
-    <h2>Diplomacy Category</h2>
-    <select id='diplomacy-category'>
-      <option value='all'>All Categories</option>
-      <!-- Add options for each category -->
-    </select>
-  </div>
-</div>
+    </div>
   </div>
 </div>
 
@@ -199,39 +183,166 @@ document.getElementById('show-all-years').addEventListener('change', (event) => 
     document.getElementById('active-year').innerText = year;
   }
 });
-// Function to build the filter array
-function buildFilter() {
-  const selectedYear = parseInt(document.getElementById('slider').value);
-  const selectedCountry = document.getElementById('delivering-country').value;
-  const selectedCategory = document.getElementById('diplomacy-category').value;
-
-  let filter = ['all'];
-
-  if (selectedYear) {
-    filter.push(['==', ['number', ['get', 'Year']], selectedYear]);
-  }
-
-  if (selectedCountry !== 'all') {
-    filter.push(['==', ['get', 'Delivering_Country'], selectedCountry]);
-  }
-
-  if (selectedCategory !== 'all') {
-    filter.push(['==', ['get', 'Diplomacy_category'], selectedCategory]);
-  }
-
-  return filter;
-}
-
-// Update filter when dropdowns or slider change
-function updateFilter() {
-  const filter = buildFilter();
-  map.setFilter('collisions', filter);
-}
-
-document.getElementById('delivering-country').addEventListener('change', updateFilter);
-document.getElementById('diplomacy-category').addEventListener('change', updateFilter);
-document.getElementById('slider').addEventListener('input', updateFilter);
-document.getElementById('show-all-years').addEventListener('change', updateFilter);
 </script>
 </body>
-</html>
+</html> that can filter by "delivering country" or diplomacy category  this is wht the data looks like {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.9,-17.7 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"HADR – Disaster Response",
+    "Delivering_Country":"United States of America",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Pacific Partnership 2023 Returns to Fiji",
+    "Source":"https://www.dvidshub.net/news/456802/pacific-partnership-2023-returns-fiji",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.9,-17.75 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"MIL-POL Engagement",
+    "Delivering_Country":"China",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Fiji to potentially cut its policing agreement with China",
+    "Source":"https://www.fbcnews.com.fj/news/fiji-to-potentially-cut-its-policing-agreement-with-china/",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.9,-17.8 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"Training",
+    "Delivering_Country":"China",
+    "Receiving_Countries":"Fiji",
+    "Comments":"UN Staff Officer Courses, Beijing",
+    "Source":"https://twitter.com/ChineseEmb_FJ/status/1696353433853530172",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.9,-17.85 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"Training",
+    "Delivering_Country":"China",
+    "Receiving_Countries":"Fiji",
+    "Comments":"RFMF Officers off to China for study",
+    "Source":"https://twitter.com/ChineseEmb_FJ/status/1695387605893038403",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.9,-17.9 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"Training",
+    "Delivering_Country":"United States of America",
+    "Receiving_Countries":"Fiji",
+    "Comments":"First female RFMF gradautes from US Military College",
+    "Source":"https://twitter.com/USEmbassySuva/status/1719972633259991469",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.95,-17.7 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"Visit Diplomacy",
+    "Delivering_Country":"Australia",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Fijian PM visits Gallipoli Barracks in Brisbane",
+    "Source":"https://twitter.com/PatConroy1/status/1715240244621246619",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.95,-17.75 ]
+    },
+    "properties": {
+    "Year":2023,
+    "Diplomacy_category":"Visit Diplomacy",
+    "Delivering_Country":"United States of America",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Fiji navy officer attends International Seapower Symposium in the US",
+    "Source":"https://twitter.com/TNatuva/status/1704480741269074314?t=VoyK4R-HbgewVZTal0Omaw&s=03",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.95,-17.8 ]
+    },
+    "properties": {
+    "Year":2022,
+    "Diplomacy_category":"Military Exercises",
+    "Delivering_Country":"Australia",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Fijian infantrymen set the standard",
+    "Source":"https://www.defence.gov.au/news-events/news/2022-07-28/fijian-infantrymen-set-standard",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.95,-17.85 ]
+    },
+    "properties": {
+    "Year":2022,
+    "Diplomacy_category":"Training",
+    "Delivering_Country":"Australia",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Fijian soldiers welcome training in Brisbane",
+    "Source":"https://www.defence.gov.au/news-events/news/2022-02-17/fijian-soldiers-welcome-training-brisbane",
+    "Colour":"Broad"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 177.95,-17.9 ]
+    },
+    "properties": {
+    "Year":2021,
+    "Diplomacy_category":"Training",
+    "Delivering_Country":"United States of America",
+    "Receiving_Countries":"Fiji",
+    "Comments":"Forging US-Fiji military partnerships in the classroom",
+    "Source":"https://spiritofamerica.org/us-fiji-military-partnership",
+    "Colour":"Broad"
