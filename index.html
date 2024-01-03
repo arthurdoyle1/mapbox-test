@@ -137,10 +137,11 @@ map.on('load', () => {
         '#AA5E79'
       ],
       'circle-opacity': 0.8
-      filter: ['==', ['number', ['get', 'Hour']], 12]
-    }
+    },
+    filter: ['==', ['number', ['get', 'Hour']], 12] // This line is moved and corrected
   });
 });
+
 </script>
 
   
